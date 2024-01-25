@@ -88,6 +88,12 @@ chmod +x wave.sh circuit_synthesize.sh
 
 ## Visualizing the Wave and Synthesizing the Circuit
 
+First make sure there is no error on your main code and its test bench:
+```bash
+ghdl -a <file_name>.vhdl
+ghdl -a <file_name_tb>.vhdl
+```
+
 To visualize the wave and synthesize the circuit, use the following commands in the `codes` directory:
 
 ```bash
