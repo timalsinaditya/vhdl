@@ -2,7 +2,7 @@
 
 This repository provides a setup for VHDL development with wave visualization and circuit synthesis. It includes scripts for wave visualization and circuit synthesis using popular tools like GHDL, GTKWave, Yosys, ghdl-yosys-plugin, and netlistsvg.
 
-## Requirements
+## Requirements (Install all this)
 
 - [GHDL](https://github.com/ghdl/ghdl) for VHDL
 - [GTKWave](https://github.com/gtkwave/gtkwave.git) for wave visualization
