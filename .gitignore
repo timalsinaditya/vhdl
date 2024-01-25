@@ -1,0 +1,7 @@
+# Ignore all files and directories except "codes"
+*
+!codes/
+
+# Inside "codes", ignore all files except .vhdl
+codes/*
+!codes/*.vhdl
