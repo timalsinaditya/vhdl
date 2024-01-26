@@ -1,7 +1,8 @@
 # Ignore all files and directories except "LAB-4"
-*
-!LAB-4/
+/*
+!/LAB-4/
 
 # Inside "LAB-4/codes", ignore all files except .vhdl
-LAB-4/codes/*
-!LAB-4/codes/*.vhdl
+/LAB-4/codes/*
+!/LAB-4/codes/*.vhdl
+
