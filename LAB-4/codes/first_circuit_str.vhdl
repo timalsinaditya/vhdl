@@ -15,13 +15,13 @@ architecture first_circuit_structural of first_circuit is
 
     end component;
 
-    component or_gate 
+    component or_gate
         port(i1 , i2 : in std_logic;
             o :out std_logic);
 
     end component;
 
-    component not_gate 
+    component not_gate
         port(i : in std_logic;
             o : out std_logic);
 
@@ -30,6 +30,7 @@ architecture first_circuit_structural of first_circuit is
     signal AB, Bcomp, BcompC, BCD, ABC : std_logic;
 
 begin
+
     label1: and_gate port map(A, B, AB);
     label2: not_gate port map(B, Bcomp);
     label3: and_gate port map(Bcomp, C, BcompC);

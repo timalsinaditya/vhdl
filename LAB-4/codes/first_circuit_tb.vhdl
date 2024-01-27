@@ -29,7 +29,8 @@ begin
    x2 <= '0', '1' after 200 ps, '0' after 400 ps, '1' after 600 ps;
    x3 <= '0', '1' after 100 ps, '0' after 200 ps, '1' after 300 ps, '0' after 400 ps, '1' after 500 ps, '0' after 600 ps, '1' after 700 ps;
    x4 <= '0', '1' after 50 ps, '0' after 100 ps, '1' after 150 ps, '0' after 200 ps, '1' after 250 ps, '0' after 300 ps, '1' after 350 ps, '0' after 400 ps, '1' after 450 ps, '0' after 500 ps, '1' after 550 ps, '0' after 600 ps, '1' after 650 ps, '0' after 700 ps, '1' after 750 ps;
-    wait;
+    wait for 800 ps;
+   wait;
     end process;
 
 end first_circuit_test;
