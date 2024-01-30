@@ -5,7 +5,7 @@ This repository provides a setup for VHDL development with wave visualization an
 ## Requirements (Install all this)
 
 - [GHDL](https://github.com/ghdl/ghdl) for VHDL
-- [GTKWave](https://github.com/gtkwave/gtkwave.git) for wave visualization
+- [GTKWave for non arch](https://github.com/gtkwave/gtkwave.git) and [GTKWave for arch user](https://aur.archlinux.org/packages/gtkwave-tcl) for wave visualization
 - [Yosys](https://github.com/YosysHQ/yosys.git) for circuit synthesis
 - [ghdl-yosys-plugin](https://github.com/ghdl/ghdl-yosys-plugin.git)  for circuit synthesis
 - [netlistsvg](https://github.com/nturley/netlistsvg.git)  for circuit synthesis
