@@ -5,3 +5,11 @@
 # Ignore all files in /LAB-4/codes/ except .vhdl files
 /LAB-4/codes/*
 !/LAB-4/codes/*.vhdl
+
+# Ignore all files and directories inside /LAB-5 except /LAB-5/codes/
+/LAB-5/*
+!/LAB-5/codes/
+
+# Ignore all files in /LAB-5/codes/ except .vhdl files
+/LAB-5/codes/*
+!/LAB-5/codes/*.vhdl
