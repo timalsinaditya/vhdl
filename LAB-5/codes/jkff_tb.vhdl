@@ -12,7 +12,7 @@ architecture jkff_test of jkff_tb is
         );
     end component;
 
-    constant period : time := 1000 ps;
+    constant period : time := 1000 fs;
     signal simEnded : boolean := false;
     signal j, k, clk, q, qbar : std_logic;
 begin
@@ -21,24 +21,14 @@ begin
 
 process
 begin
-    while not simEnded loop
         clk <= '1';
         wait for period / 2;
         clk <= '0';
         wait for period / 2;
-    end loop;
-    wait;
 end process;
 
-    j <= '0', '1' after 3*period, '0' after 4*period, '1' after 6*period;
-    k <= '0', '1' after 1*period, '1' after 3*period, '1' after 6*period, '0' after 7*period;
-
-process
-begin
-    wait for 8*period;
-  simEnded <= true;
-  wait;
-end process;
-
+    j <= '0', '0' after 2*period, '0' after 4*period, '1' after 7*period,'0'after 9*period;
+    k <= '0', '1' after 2*period, '0' after 3*period, '1' after 4*period, '1' after 6*period, '0' after 7*period, '1'
+         after 8*period, '0' after 11*period;
 
 end jkff_test;
