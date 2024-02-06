@@ -1,32 +1,34 @@
 library ieee;
 use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 
-entity dff is 
-    port(data, clk : in std_logic;
-        q, qbar : out std_logic);
-
+entity dff is
+  port (data, clk, rst: in std_logic;
+        q : out std_logic;
+        qbar : out std_logic);
 end dff;
 
-architecture structural of dff is 
-    component nand_gate 
-        port ( i1, i2 : in std_logic;
-             o : out std_logic);
+architecture dff_struct of dff is
+  component nand_gate
+    port(i1, i2 : in std_logic;
+         o : out std_logic);
+  end component;
 
-    end component;
-
-    signal z1, z2, z3, z4, z5, z6, temp1, temp2 : std_logic;
+  signal t5, t3, t4, t1 : std_logic;
+  signal t6, t2, t8, t7, t9, t10, not_rst : std_logic;
 
 begin
-    nand1 : nand_gate port map (z4, z2, z1);
-    nand2 : nand_gate port map (clk, z1, z2 );
-    nand3 : nand_gate port map (z2, clk, temp1);
-    nand4 : nand_gate port map (temp1, temp1, temp2);
-    nand5 : nand_gate port map (temp2, z4, z3);
-    nand6 : nand_gate port map (z3, data, z4);
-    nand7 : nand_gate port map (z2, z6, z5);
-    nand8 : nand_gate port map (z3, z5, z6);
+    not_rst <= not rst;
+  nand6 : nand_gate port map (t4, t2, t1);
+  nand1 : nand_gate port map (clk, t1, t2);
+  nand2 : nand_gate port map (clk, t2, t7);
+  nand3 : nand_gate port map (t7, t7, t8);
+  nand4 : nand_gate port map (t8, t4, t3);
+  nand5 : nand_gate port map (t3, data, t4);
+  nand7 : nand_gate port map (t2, t6, t5);
+  nand8 : nand_gate port map (t3, t5, t9);
 
-    q <= z5;
-    qbar <= z6;
+  q <= t5;
+  qbar <= t6;
 
-end structural;
+end dff_struct;

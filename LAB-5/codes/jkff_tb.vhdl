@@ -4,31 +4,29 @@ use ieee.std_logic_1164.all;
 entity jkff_tb is
 end jkff_tb;
 
-architecture jkff_test of jkff_tb is
+architecture tb of jkff_tb is
     component jkff
-        port (
-            j, k, clk : in std_logic;
-            q, qbar : out std_logic
-        );
+        port (j, k, clk : in std_logic;
+              q, qbar : out std_logic);
     end component;
 
-    constant period : time := 1000 fs;
-    signal simEnded : boolean := false;
-    signal j, k, clk, q, qbar : std_logic;
+    signal clk, j, k, rst, q, qp : std_logic := '0';
+    constant Period : time := 1000 ns;
+
 begin
+    dut : jkff port map (j, k, clk, q, qp);
 
-    uut : jkff port map (j, k, clk, q, qbar);
+    clock_process: process
+    begin
+      for i in 1 to 20 loop
+            clk <= not clk;
+            wait for Period/2;
+        end loop;
+        wait;
+    end process clock_process;
 
-process
-begin
-        clk <= '1';
-        wait for period / 2;
-        clk <= '0';
-        wait for period / 2;
-end process;
+    j <= '0', '1' after 4*Period, '0' after 8*Period, '1' after 10*Period;
+    k <= '0', '0' after 4*Period, '1' after 8*Period, '1' after 10*Period;
+    rst <= '1', '0' after Period;
 
-    j <= '0', '0' after 2*period, '0' after 4*period, '1' after 7*period,'0'after 9*period;
-    k <= '0', '1' after 2*period, '0' after 3*period, '1' after 4*period, '1' after 6*period, '0' after 7*period, '1'
-         after 8*period, '0' after 11*period;
-
-end jkff_test;
+end tb;

@@ -5,34 +5,26 @@ entity dff_tb is
 end entity dff_tb;
 
 architecture testbench of dff_tb is
-    signal clk, data : std_logic := '0';
-    signal q, qbar : std_logic;
-
     component dff
         port (
-            data, clk : in std_logic;
+            data, clk,rst : in std_logic;
             q, qbar : out std_logic
         );
     end component;
     
+    signal clk, data : std_logic := '0';
     constant period : time := 1000 ps;
-    signal simEnded : boolean;   
-
+    signal q, qbar,rst : std_logic := '0';
 begin
-    DUT: dff port map (data, clk, q, qbar);
+    DUT: dff port map (data,clk,rst);
     
 process
 begin
-    while not simEnded loop
         clk <= '1';
         wait for period / 2;
         clk <= '0';
         wait for period / 2;
-    end loop;
+end process;
 
-    data <= '0', '1' after period, '0' after 2*period;
-        wait for 100*period;
-         simEnded <= true;
-         wait;
-     end process;
+    data <= '1', '1' after period, '0' after 2*period;
 end architecture testbench;
