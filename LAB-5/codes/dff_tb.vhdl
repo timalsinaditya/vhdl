@@ -7,7 +7,7 @@ end entity dff_tb;
 architecture testbench of dff_tb is
     component dff
         port (
-            data, clk,rst : in std_logic;
+            data, clk: in std_logic;
             q, qbar : out std_logic
         );
     end component;
@@ -16,7 +16,7 @@ architecture testbench of dff_tb is
     constant period : time := 1000 ps;
     signal q, qbar,rst : std_logic := '0';
 begin
-    DUT: dff port map (data,clk,rst);
+    DUT: dff port map (data,clk);
     
 process
 begin

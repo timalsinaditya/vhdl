@@ -1,20 +1,20 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-entity jkff_tb is
-end jkff_tb;
+entity tff_tb is
+end tff_tb;
 
-architecture tb of jkff_tb is
-    component jkff
-        port (j, k, clk : in std_logic;
+architecture tb of tff_tb is
+    component tff
+        port (T, clk : in std_logic;
               q, qbar : out std_logic);
     end component;
 
-    signal clk, j, k,  q, qp : std_logic := '0';
+    signal clk, t, q, qp : std_logic := '0';
     constant Period : time := 1000 ns;
 
 begin
-    dut : jkff port map (j, k, clk, q, qp);
+    dut : tff port map (t, clk, q, qp);
 
     clock_process: process
     begin
@@ -27,8 +27,7 @@ begin
     process
     begin 
 
-     j <= '0', '1' after 4*Period, '0' after 8*Period, '1' after 10*Period;
-     k <= '0', '0' after 4*Period, '1' after 8*Period, '1' after 10*Period, '0' after 10*Period;
+     t <= '0', '1' after 4*Period, '0' after 8*Period, '1' after 10*Period;
     wait for 12*Period;
     wait;
   end process; 
