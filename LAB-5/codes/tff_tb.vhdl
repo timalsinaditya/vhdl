@@ -6,29 +6,33 @@ end tff_tb;
 
 architecture tb of tff_tb is
     component tff
-        port (T, clk : in std_logic;
+        port (T, clk, rst: in std_logic;
               q, qbar : out std_logic);
     end component;
 
-    signal clk, t, q, qp : std_logic := '0';
+    signal clk, t, q, rst, qp : std_logic := '0';
     constant Period : time := 1000 ns;
+    signal SimEnded : boolean := false;
 
 begin
-    dut : tff port map (t, clk, q, qp);
+    dut : tff port map (t, clk, rst, q, qp);
 
     clock_process: process
     begin
-      for i in 1 to 20 loop
-            clk <= not clk;
+      while not SimEnded loop
+            clk <= not clk after Period/2;
             wait for Period/2;
         end loop;
         wait;
     end process clock_process;
-    process
-    begin 
+     
 
-     t <= '0', '1' after 4*Period, '0' after 8*Period, '1' after 10*Period;
-    wait for 12*Period;
-    wait;
+    t <= '0', '1' after 4*Period, '0' after 8*Period, '1' after 10*Period;
+    rst <= '1', '0' after Period;
+    stimulus_process : process
+    begin 
+      wait for 10*Period;
+      SimEnded <= True;
+      wait;
   end process; 
 end tb;

@@ -3,9 +3,8 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 entity dff is
-  port (data, clk: in std_logic;
-        q : out std_logic;
-        qbar : out std_logic);
+  port (data, clk, rst: in std_logic;
+        q, qbar : out std_logic);
 end dff;
 
 architecture dff_struct of dff is
@@ -14,10 +13,10 @@ architecture dff_struct of dff is
          o : out std_logic);
   end component;
 
-  signal a1, a2, a3, a4, a5, a6, temp1, temp2 : std_logic ;
+  signal a1, a2, a3, a4, a5, a6, temp1, temp2, temp3, temp4, not_rst : std_logic ;
 
 begin
-  --not_rst <= not rst;
+  not_rst <= not rst;
   nand1 : nand_gate port map (a1, clk, a2);
   nand2 : nand_gate port map (clk, a2, temp1);
   nand3 : nand_gate port map (temp1, temp1, temp2);
@@ -25,9 +24,11 @@ begin
   nand5 : nand_gate port map (temp2, a4, a3);
   nand6 : nand_gate port map (a4, a2, a1);
   nand7 : nand_gate port map (a2, a6, a5);
-  nand8 : nand_gate port map (a3, a3, a6);
+  nand8 : nand_gate port map (a3, a5, temp3);
+  nand9 : nand_gate port map (temp3, temp3, temp4);
+  nand10 : nand_gate port map (temp4, not_rst, a6);
 
-  q <= a5;
+  q <= '0' when rst = '1' else a5;
   qbar <= a6;
 
 end dff_struct;
