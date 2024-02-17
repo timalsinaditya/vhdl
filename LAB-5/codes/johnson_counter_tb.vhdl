@@ -1,24 +1,26 @@
+
 library ieee;
 use ieee.std_logic_1164.all;
 
-entity sync_up_counter_tb is
+entity johnson_counter_tb is
 
-end sync_up_counter_tb;
+  end johnson_counter_tb;
 
-architecture testbench of sync_up_counter_tb is 
-  component sync_up_counter is
-    port (input, clk, rst: in std_logic;
-         q : out std_logic_vector(3 downto 0));
+architecture testbench of johnson_counter_tb is
+  
+  component johnson_counter is
+    port (clk, rst : in std_logic;
+         qout : out std_logic_vector(3 downto 0));
   
   end component;
 
-  signal i, rst : std_logic;
+  signal rst : std_logic;
   signal clk :std_logic := '0';
-  -- signal SimEnded : boolean := false;
+   signal SimEnded : boolean := false;
   signal Period : time := 100 ns;
 
-begin 
-  uut : sync_up_counter port map (i, clk, rst);
+begin
+  uut : johnson_counter port map(clk, rst);
 
 ---  clock_process : process
 ---  begin 
@@ -30,7 +32,7 @@ begin
 ---  end process;
   haina : process   
   begin 
-    for j in 1 to 50 loop 
+    for j in 1 to 32 loop 
       clk <= not clk;
       wait for Period/2;
     end loop;
@@ -42,6 +44,6 @@ begin
 ---    SimEnded <= True;
 ---    wait;
 ---  end process;
-  i <= '1';
   rst <= '1', '0' after Period;
 end testbench;
+
