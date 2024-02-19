@@ -4,14 +4,12 @@ use ieee.std_logic_1164.all;
 entity sync_up_counter is
   port (input, clk, rst: in std_logic;
        q : out std_logic_vector(3 downto 0));
-
 end sync_up_counter;
 
 architecture structural of sync_up_counter is
   component tff is 
     port(T, clk, rst: in std_logic;
         q, qbar : out std_logic);
-    
   end component;
 
   signal q_temp : std_logic_vector(3 downto 0);

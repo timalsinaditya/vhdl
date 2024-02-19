@@ -26,9 +26,9 @@ begin
         wait;
     end process clock_process;
      
-
     t <= '0', '1' after 4*Period, '0' after 8*Period, '1' after 10*Period;
     rst <= '1', '0' after Period;
+
     stimulus_process : process
     begin 
       wait for 10*Period;

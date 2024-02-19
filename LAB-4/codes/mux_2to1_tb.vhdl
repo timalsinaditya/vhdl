@@ -2,7 +2,6 @@ library ieee;
 use ieee.std_logic_1164.all;
 
 entity mux_2to1_tb is 
-
 end mux_2to1_tb;
 
 architecture mux_2to1_test of mux_2to1_tb is
@@ -25,5 +24,4 @@ begin
           wait for 800 ps;
 wait;
     end process;
-
 end mux_2to1_test;

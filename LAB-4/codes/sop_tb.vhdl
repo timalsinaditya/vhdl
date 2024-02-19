@@ -1,16 +1,13 @@
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
 
 entity sop_tb is 
-    
 end sop_tb;
 
 architecture sop_test of sop_tb is
     component sop is 
         port (x1, x2, x3, x4 : in std_logic;
              F : out std_logic);
-
     end component;
 
     signal a, b, c, d : std_logic;

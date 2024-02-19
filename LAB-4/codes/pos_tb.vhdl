@@ -1,16 +1,13 @@
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
 
 entity pos_tb is 
-    
 end pos_tb;
 
 architecture pos_test of pos_tb is
     component pos is 
         port (x1, x2, x3, x4 : in std_logic;
              F : out std_logic);
-
     end component;
 
     signal a, b, c, d : std_logic;

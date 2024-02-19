@@ -1,17 +1,13 @@
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
 
 entity mux_4to1_tb is
-
 end mux_4to1_tb;
 
 architecture mux_4to1_tb_df of mux_4to1_tb is
   component mux_4to1
-    port (
-      x1, x2, x3, x4, s0, s1 : in std_logic;
-      y : out std_logic
-    );
+    port (x1, x2, x3, x4, s0, s1 : in std_logic;
+      y : out std_logic);
   end component;
 
   signal a, b, c, d, s0, s1 : std_logic;

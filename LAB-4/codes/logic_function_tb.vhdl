@@ -1,18 +1,17 @@
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
 
 entity logic_function_tb is 
-
 end logic_function_tb;
 
 architecture logic_function_test of logic_function_tb is
     component logic_function is 
         port(x1, x2, x3 : in std_logic;
             f : out std_logic);
-    
     end component;
+
     signal a, b, c : std_logic;
+
 begin
     UUT: logic_function port map (x1=>c, x2=>b, x3=>a);
      
@@ -25,7 +24,6 @@ begin
           wait for 800 ps;
 wait;
     end process;
-
 end logic_function_test;
 
 

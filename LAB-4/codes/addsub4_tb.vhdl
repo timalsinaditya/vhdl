@@ -2,7 +2,6 @@ library ieee;
 use ieee.std_logic_1164.all;
 
 entity addsub4_tb is
-
 end addsub4_tb;
 
 architecture addsub_test of addsub4_tb is
@@ -11,7 +10,6 @@ architecture addsub_test of addsub4_tb is
              ctr_line : in std_logic;
             sum : out std_logic_vector(3 downto 0);
             carry : out std_logic);
-
     end component;
 
     signal x1, x2 : std_logic_vector(3 downto 0);

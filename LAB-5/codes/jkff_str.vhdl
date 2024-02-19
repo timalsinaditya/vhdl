@@ -1,27 +1,27 @@
 library ieee;
 use ieee.std_logic_1164.all;
 
-entity jkff is 
-    port(j, k, clk : in std_logic;
-        q, qbar : out std_logic);
-
+entity jkff is
+  port(j, k, clk, rst : in std_logic;
+       q, qbar : out std_logic);
 end jkff;
 
-architecture structural of jkff is 
-component dff  
-    port(data, clk : in std_logic;
-        q, qbar : out std_logic);
+architecture structural of jkff is
+  component dff
+    port(data, clk, rst : in std_logic;
+         q, qbar : out std_logic);
+  end component;
 
-end component;
-    signal y1, y2, y3, y4, y5, y6, rst : std_logic;
-begin 
-   dff1 : dff port map (y5, clk, y2, y1);
-    y3 <= y1 and j;
-    y6 <= not K;
-    y4 <= y2 and y6;
-    y5 <= y3 or y4;
-    q <= y2; 
-    qbar <= y1;
+  signal t1, t2, t3, t4, t5, t6 : std_logic;
 
+begin
+  dff_inst : dff port map(t6, clk, rst, t2, t4);
+
+  t1 <= not k;
+  t3 <= t1 and t2;
+  t5 <= j and t4;
+  t6 <= t3 or t5;
+
+  q <= t2;
+  qbar <= t4;
 end structural;
-

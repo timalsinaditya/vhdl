@@ -6,14 +6,12 @@ entity addsub4 is
          ctr_line : in std_logic;
          sum : out std_logic_vector(3 downto 0);
          carry : out std_logic);
-
 end addsub4;
 
 architecture structural of addsub4 is
     component fa_1bit is
         port(a, b , cin : in std_logic;
             s, cout : out std_logic);
-
     end component;
 
     signal couts : std_logic_vector(3 downto 0);
@@ -27,7 +25,7 @@ begin
     
     remaining_fa: for i in 1 to 3 generate
       fa_inst: fa_1bit port map (A(i), xoredin(i), couts(i-1), sum(i), couts(i));
-  end generate remaining_fa;
+    end generate remaining_fa;
 
-  carry <= couts(3);
-  end structural;
+    carry <= couts(3);
+end structural;

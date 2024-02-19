@@ -2,23 +2,19 @@ library ieee;
 use ieee.std_logic_1164.all;
 
 entity siso_tb is
-
 end siso_tb;
 
 architecture testbench of siso_tb is
   component siso is 
     port (Din, clock, rst: in std_logic;
            Dout : out std_logic);
- 
   end component;
   
   signal din, clk, rst : std_logic := '0';
-
   signal SimEnded : boolean := false;
-  
   signal Period : time := 100 ns;
-begin
 
+begin
   uut : siso port map (din, clk, rst);
 
   clock_process : process 
@@ -35,10 +31,9 @@ begin
 
   stimulus_process : process
   begin
-    wait for 20*Period;
+    wait for 12*Period;
     simEnded <= True;
     wait;
   end process;
-
 end testbench;
 

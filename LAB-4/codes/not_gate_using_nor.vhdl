@@ -10,7 +10,6 @@ architecture structural of not_gate_using_nor is
     component nor_gate is
         port(i1, i2 : in std_logic;
             o :out std_logic);
-
     end component;
 
 begin

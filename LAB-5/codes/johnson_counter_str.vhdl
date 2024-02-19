@@ -4,7 +4,6 @@ use ieee.std_logic_1164.all;
 entity johnson_counter is
   port (clk, rst : in std_logic;
        qout : out std_logic_vector(3 downto 0));
-
 end johnson_counter;
 
 architecture structural of johnson_counter is 
@@ -14,7 +13,6 @@ architecture structural of johnson_counter is
   end component;
 
   signal y : std_logic;
-
   signal q : std_logic_vector(3 downto 0);
 
 begin

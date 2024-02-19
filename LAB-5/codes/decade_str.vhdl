@@ -6,7 +6,7 @@ entity decade is
        q : out std_logic_vector(3 downto 0));
 end decade;
 
-architecture decade_struct of decade is
+architecture structural of decade is
   component tff
     port(t, clk, rst : in std_logic;
          q, qbar : out std_logic);
@@ -27,4 +27,4 @@ begin
 
   q <= q_int;
   
-end decade_struct;
+end structural;

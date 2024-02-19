@@ -1,11 +1,9 @@
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
 
 entity sop is 
     port (x1, x2, x3, x4 : in std_logic;
          F : out std_logic);
-
 end sop;
 
 architecture dataflow of sop is

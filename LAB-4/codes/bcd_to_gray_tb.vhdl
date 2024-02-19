@@ -2,20 +2,17 @@ library ieee;
 use ieee.std_logic_1164.all;
 
 entity bcd_to_gray_tb is
-
 end bcd_to_gray_tb;
 
 architecture bcd_to_gray_test of bcd_to_gray_tb is  
-component bcd_to_gray is 
-    port (
-         BCD : in std_logic_vector(3 downto 0);
-        Gray: out std_logic_vector(3 downto 0)
-    );
-end component;
+    component bcd_to_gray is 
+      port (BCD : in std_logic_vector(3 downto 0);
+          Gray: out std_logic_vector(3 downto 0));
+    end component;
 
     signal BCD_input , gray : std_logic_vector(3 downto 0);
-
     constant DELAY : time := 50 ps;
+
 begin 
     UUT: bcd_to_gray port map(BCD => BCD_input, gray => Gray);
 
@@ -43,5 +40,4 @@ begin
         wait for DELAY;
         wait;
     end process;
-
 end bcd_to_gray_test;

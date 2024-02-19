@@ -4,7 +4,6 @@ use ieee.std_logic_1164.all;
 entity two_digit_bcd is 
   port (clk , clear : in std_logic;
        qo : out std_logic_vector(7 downto 0));
-
 end two_digit_bcd;
 
 architecture structural of two_digit_bcd is
@@ -13,12 +12,12 @@ architecture structural of two_digit_bcd is
           d : in std_logic_vector(3 downto 0);
           q : out std_logic_vector(3 downto 0);
           z : out std_logic);
-  
   end component;
   
   signal load1, load2, and1, and2: std_logic;
   signal qtemp : std_logic_vector(7 downto 0);
   signal qtemp1, qtemp2 : std_logic_vector(3 downto 0);
+
 begin
   and1 <= qtemp(0) and qtemp(3); 
   and2 <= qtemp(4) and qtemp(7) and and1;
