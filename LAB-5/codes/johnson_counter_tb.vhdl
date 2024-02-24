@@ -1,3 +1,5 @@
+---------------Aditya Timalsina----------------
+-------------077bei009----------------------
 library ieee;
 use ieee.std_logic_1164.all;
 
@@ -16,6 +18,7 @@ architecture testbench of johnson_counter_tb is
   signal Period : time := 100 ns;
 begin
   uut : johnson_counter port map(clk, rst);
+  haina : process
   begin 
     for j in 1 to 20 loop 
       clk <= not clk;
